@@ -65,12 +65,6 @@ public class HeroAttack : MonoBehaviour {
         }
 	}
 
-    private void kiki_sabotage() {
-        Debug.Log("Malwere :P");
-        control_script.set_velocity_y(1000);
-        HeroStamina.decrease_stamina(100);
-    }
-
     private void on_attack() {
 
         if (HeroStamina.get_stamina() < (attack_cost * (attack_stack + 1))) {
@@ -118,7 +112,6 @@ public class HeroAttack : MonoBehaviour {
     public void exit_attack() {
         this.in_attack = false;
         this.control_script.set_state(HeroController.STATE.ACTIVE);
-        kiki_sabotage();
         attack_stack = 0;
     }
 
