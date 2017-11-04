@@ -22,13 +22,13 @@ public class HeroAttack : MonoBehaviour {
 
     private Inventory inv;
 
-    void awake() {
+    void Awake() {
+        inv = FindObjectOfType<Inventory>();
         inv.add_listener(this.gameObject);
     }
 
 	// Use this for initialization
 	void Start () {
-        inv = FindObjectOfType<Inventory>();
         inv.add_listener(this.gameObject);
 
         control_script = GetComponent<HeroController>();

@@ -10,7 +10,7 @@ class BronzeShortSword: WeaponObject {
         this.o_desription = "Many a seasoned warrior first tasted the fires of battle with blades like this.";
 
         this.damage = 5;
-        this.stamina_cost = 1;
+        this.stamina_cost = 2;
     }
 
 }

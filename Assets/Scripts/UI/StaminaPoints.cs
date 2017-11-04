@@ -11,9 +11,9 @@ public class StaminaPoints : MonoBehaviour {
     private AudioClip my_clip;
     private AudioSource my_source;
 
-    private Vector2 starting_point = new Vector2(33f, -53.5f);
-    private float point_length = 24f;
-    private float buffer_length = 3f;
+    private Vector2 starting_point = new Vector2(13f, -22f);
+    private float point_length = 10f;
+    private float buffer_length = 1.5f;
 
     private Dictionary<int, GameObject> my_points = new Dictionary<int, GameObject>();
 
