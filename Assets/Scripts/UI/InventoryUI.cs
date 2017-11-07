@@ -191,6 +191,10 @@ public class InventoryUI : MonoBehaviour {
             HeroAnimation ha = FindObjectOfType<HeroAnimation>();
             hc.set_state(HeroController.STATE.LOCKED);
             ha.set_anim("Idle");
+
+            if (this.my_item_list.Count != inv.get_items(inv.get_category_index_raw()).Count) {
+                this.build_list();
+            }
         }
         else {
             hc.set_state(HeroController.STATE.ACTIVE);

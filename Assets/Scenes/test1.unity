@@ -1807,7 +1807,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1037677007}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1839,6 +1839,7 @@ GameObject:
   - component: {fileID: 1038442520}
   - component: {fileID: 1038442519}
   - component: {fileID: 1038442522}
+  - component: {fileID: 1038442523}
   m_Layer: 0
   m_Name: Pickupable
   m_TagString: Untagged
@@ -1860,7 +1861,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 1
 --- !u!212 &1038442520
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1912,7 +1913,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1038442518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.48, y: -82.07, z: 0}
+  m_LocalPosition: {x: -52.32, y: -62.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1930,6 +1931,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_glow: {fileID: 1789963327642692, guid: 5ea20abeab4223141b72005b679dbbdf, type: 2}
+--- !u!114 &1038442523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038442518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92066fd43605dfc45819f743e18f1bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  my_wrapper: {fileID: 1443943980910236, guid: 2a1e46551875e604ba1d15a3d38190a0, type: 2}
+  interact_prompt: {fileID: 1598023509776200, guid: 4e592d99ef9ce5544846ba0f0a1971c3,
+    type: 2}
 --- !u!1 &1042836757
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class Inventory : MonoBehaviour {
         cursor_type = OBJECT_TYPE.WEAPON;
 
         add_weapon(new BronzeLongknife());
-        add_weapon(new BronzeShortSword());
+        //add_weapon(new BronzeShortSword());
 
         add_clothing(new BoorLeatherRags());
 
