@@ -1839,7 +1839,8 @@ GameObject:
   - component: {fileID: 1038442520}
   - component: {fileID: 1038442519}
   - component: {fileID: 1038442522}
-  - component: {fileID: 1038442523}
+  - component: {fileID: 1038442525}
+  - component: {fileID: 1038442524}
   m_Layer: 0
   m_Name: Pickupable
   m_TagString: Untagged
@@ -1931,7 +1932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_glow: {fileID: 1789963327642692, guid: 5ea20abeab4223141b72005b679dbbdf, type: 2}
---- !u!114 &1038442523
+--- !u!114 &1038442524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1939,10 +1940,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1038442518}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92066fd43605dfc45819f743e18f1bf5, type: 3}
+  m_Script: {fileID: 11500000, guid: 071dc89352e464345ba554711ebcf388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  my_wrapper: {fileID: 1443943980910236, guid: 2a1e46551875e604ba1d15a3d38190a0, type: 2}
+--- !u!114 &1038442525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038442518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ce3f9a360436f45b609978c9db7236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  low_point: {x: 0, y: 0}
+  high_point: {x: 0, y: 1}
   interact_prompt: {fileID: 1598023509776200, guid: 4e592d99ef9ce5544846ba0f0a1971c3,
     type: 2}
 --- !u!1 &1042836757

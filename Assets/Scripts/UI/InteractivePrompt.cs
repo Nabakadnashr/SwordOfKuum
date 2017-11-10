@@ -2,32 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WrapperCollectible : MonoBehaviour {
+public class InteractivePrompt : MonoBehaviour {
 
     private enum STATE {
         ACTIVE,
         INACTIVE
     }
 
-    [SerializeField]
-    private GameObject my_wrapper;
-    [SerializeField]
-    private GameObject interact_prompt;
-    private GameObject prompt_object;
-    private SpriteRenderer prompt_renderer;
-
     private STATE my_state;
 
+    [SerializeField]
     private Vector2 low_point = new Vector2(0f, 0f);
+    [SerializeField]
     private Vector2 high_point = new Vector2(0f, 1f);
 
     private Color low_color = new Color(1f, 1f, 1f, 0f);
     private Color high_color = new Color(1f, 1f, 1f, 1f);
 
     private float lerp_rate;
-    
-	// Use this for initialization
-	void Start () {
+
+    [SerializeField]
+    private GameObject interact_prompt;
+    private GameObject prompt_object;
+    private SpriteRenderer prompt_renderer;
+
+    // Use this for initialization
+    void Start () {
         my_state = STATE.INACTIVE;
         lerp_rate = 0.2f;
 	}
@@ -37,12 +37,6 @@ public class WrapperCollectible : MonoBehaviour {
 
         switch (my_state) {
             case STATE.ACTIVE: {
-
-                    if (Input.GetKeyDown(HeroKeys.INTERACT_KEY)) {
-                        GameObject o = Instantiate(my_wrapper, this.transform);
-                        o.SendMessage("add_me_to_inventory");
-                        Destroy(gameObject);
-                    }
 
                     if (prompt_object == null) {
                         prompt_object = Instantiate(interact_prompt, this.transform);
@@ -57,8 +51,10 @@ public class WrapperCollectible : MonoBehaviour {
                         prompt_renderer.color = color_lerp(prompt_renderer.color, high_color, lerp_rate);
                     }
 
-                }break;
+                }
+                break;
             case STATE.INACTIVE: {
+
                     if (prompt_object) {
                         if (!prompt_object.transform.localPosition.Equals(low_point)) {
                             prompt_object.transform.localPosition = vector_lerp(prompt_object.transform.localPosition, low_point, lerp_rate);
@@ -72,7 +68,7 @@ public class WrapperCollectible : MonoBehaviour {
                 }
                 break;
         }
-
+		
 	}
 
     private Vector2 vector_lerp(Vector2 start_point, Vector2 end_point, float rate) {
@@ -97,6 +93,10 @@ public class WrapperCollectible : MonoBehaviour {
         }
     }
 
+    public bool is_active() {
+        return this.my_state == STATE.ACTIVE;
+    }
+
     public void OnTriggerEnter2D(Collider2D coll) {
         if (coll.gameObject.tag == "Player") {
             this.my_state = STATE.ACTIVE;
@@ -108,4 +108,5 @@ public class WrapperCollectible : MonoBehaviour {
             this.my_state = STATE.INACTIVE;
         }
     }
+
 }

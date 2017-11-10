@@ -14,7 +14,12 @@ public class WrapperBronzeShortSword : MonoBehaviour {
 		
 	}
 
-    public void add_me_to_inventory() {
+    public void pickup_action() {
+        this.add_me_to_inventory();
+        Destroy(this.gameObject);
+    }
+
+    private void add_me_to_inventory() {
         Inventory inv = FindObjectOfType<Inventory>();
         inv.add_weapon(new BronzeShortSword());
     }

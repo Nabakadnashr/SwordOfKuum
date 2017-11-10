@@ -7,11 +7,14 @@ public class Pickup : MonoBehaviour {
     [SerializeField]
     private GameObject my_glow;
 
+    private InteractivePrompt my_prompt;
+
     private float timer;
     private float time;
 
 	// Use this for initialization
 	void Start () {
+        my_prompt = GetComponent<InteractivePrompt>();
         timer = 0f;
         time = 3f;
 	}
@@ -24,5 +27,15 @@ public class Pickup : MonoBehaviour {
             Instantiate(my_glow, this.transform);
             timer = 0f;
         }
+
+        if (my_prompt.is_active()) {
+            if (Input.GetKeyDown(HeroKeys.INTERACT_KEY)) {
+                HeroController hc = FindObjectOfType<HeroController>();
+                if (hc.get_state() == HeroController.STATE.ACTIVE) {
+                    gameObject.SendMessage("pickup_action");
+                }
+            }
+        }
+        
     }
 }
