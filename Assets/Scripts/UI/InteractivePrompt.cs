@@ -63,6 +63,9 @@ public class InteractivePrompt : MonoBehaviour {
                         if (!prompt_renderer.color.Equals(low_color)) {
                             prompt_renderer.color = color_lerp(prompt_renderer.color, low_color, lerp_rate);
                         }
+                        else {
+                            Destroy(prompt_object);
+                        }
                     }
 
                 }

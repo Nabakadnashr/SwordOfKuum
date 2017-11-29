@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour {
         if (Input.GetKeyDown(HeroKeys.INVENTORY_KEY)) {
             InventoryUI io = FindObjectOfType<InventoryUI>();
             if (io) {
-                io.set_state(io.get_state() == InventoryUI.STATE.ACTIVE ? InventoryUI.STATE.INACTIVE : InventoryUI.STATE.ACTIVE);
+                io.set_state(io.get_state() == InventoryUI.STATE.INACTIVE ? InventoryUI.STATE.ACTIVE : InventoryUI.STATE.INACTIVE);
             }
         }
 		

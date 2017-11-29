@@ -62,17 +62,23 @@ public class HeroController : MonoBehaviour {
 
             if (my_state != STATE.LOCKED) {
 
+                float walk_speed_aux = walk_speed;
+
                 facing = this.determine_direction();
 
                 velocity_x += acceleration * input_x;
                 velocity_y += acceleration * input_y;
 
-                if (Mathf.Abs(velocity_x) > walk_speed) {
-                    velocity_x = Mathf.Sign(velocity_x) * walk_speed;
+                if (input_x * input_y != 0) {
+                    walk_speed_aux = walk_speed * Mathf.Cos(Mathf.PI / 4f);
                 }
 
-                if (Mathf.Abs(velocity_y) > walk_speed) {
-                    velocity_y = Mathf.Sign(velocity_y) * walk_speed;
+                if (Mathf.Abs(velocity_x) > walk_speed_aux) {
+                    velocity_x = Mathf.Sign(velocity_x) * walk_speed_aux;
+                }
+
+                if (Mathf.Abs(velocity_y) > walk_speed_aux) {
+                    velocity_y = Mathf.Sign(velocity_y) * walk_speed_aux;
                 }
 
             }
