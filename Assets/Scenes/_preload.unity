@@ -229,6 +229,7 @@ MonoBehaviour:
   my_mixer: {fileID: 24100000, guid: a0545cc88820b9d4f818b90eece8bcab, type: 2}
   warriors_of_light: {fileID: 8300000, guid: 2793b8eb90878f4488084b24f5143696, type: 3}
   solar_tanjent: {fileID: 8300000, guid: f48fac46f26eb474aa64bb19af514f06, type: 3}
+  _33hz: {fileID: 8300000, guid: aa3a9a3cdbca1b748b6dbb17eeb10641, type: 3}
 --- !u!82 &1294869588
 AudioSource:
   m_ObjectHideFlags: 0

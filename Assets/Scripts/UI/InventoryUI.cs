@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour {
 
@@ -26,7 +27,10 @@ public class InventoryUI : MonoBehaviour {
     private RectTransform item_list;
 
     [SerializeField]
-    private Text item_description;
+    private GameObject item_description_obj;
+    //[SerializeField]
+    //private Text item_description;
+    private TextMeshProUGUI item_description;
 
     [SerializeField]
     private GameObject category_pointer;
@@ -46,7 +50,7 @@ public class InventoryUI : MonoBehaviour {
         { Inventory.OBJECT_TYPE.WRITING, new Vector2(35f, 160f) }
     };
 
-    private Vector2 item_start_point = new Vector2(90, 40);
+    private Vector2 item_start_point = new Vector2(55f, 59.5f);
     private float item_buffer = 15f;
 
     private Vector2 item_pointer_start_point = new Vector2(-59.5f, 40f);
@@ -75,6 +79,8 @@ public class InventoryUI : MonoBehaviour {
         item_pointer_position = item_pointer_start_point;
         active_pointer_position = active_pointer_start_point;
         pointer_move_rate = 0.2f;
+
+        item_description = item_description_obj.GetComponent<TextMeshProUGUI>();
 
         build_list();
 	}
@@ -222,13 +228,15 @@ public class InventoryUI : MonoBehaviour {
             Vector2 item_pos = this.item_start_point + new Vector2(0f, this.item_buffer * i * -1);
             GameObject o = Instantiate(item_entry, item_list);
             o.transform.localPosition = item_pos;
-            Text item_name = o.GetComponent<Text>();
+            //Text item_name = o.GetComponent<Text>();
+            TextMeshProUGUI item_name = o.GetComponent<TextMeshProUGUI>();
             item_name.text = list[i].get_name();
 
             this.my_item_list.Add(i, o);
         }
 
         this.item_description.text = list[inv.get_item_index(inv.get_category_index_raw())].get_description();
+        //this.item_description_pro.GetComponent<TextMeshProUGUI>().text = list[inv.get_item_index(inv.get_category_index_raw())].get_description();
         
     }
 }
