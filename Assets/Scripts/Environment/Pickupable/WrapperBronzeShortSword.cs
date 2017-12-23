@@ -2,25 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WrapperBronzeShortSword : MonoBehaviour {
+public class WrapperBronzeShortSword : WrapperPickupable {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Awake() {
+        this.GetComponent<Pickup>().set_pickup_object(new BronzeShortSword());
+    }
 
+    /*override
     public void pickup_action() {
-        this.add_me_to_inventory();
-        Destroy(this.gameObject);
-    }
-
+        //this.add_me_to_inventory();
+        //Destroy(this.gameObject);
+    }*/
+    /*
     private void add_me_to_inventory() {
-        Inventory inv = FindObjectOfType<Inventory>();
+        Inventory inv = MonoBehaviour.FindObjectOfType<Inventory>();
         inv.add_weapon(new BronzeShortSword());
-    }
+    }*/
 }

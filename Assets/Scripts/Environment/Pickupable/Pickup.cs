@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 
+    private ObjectGeneric my_pickup_object;
+
+    [SerializeField]
+    private GameObject notice_holder;
+
     [SerializeField]
     private GameObject my_glow;
+
+    [SerializeField]
+    private GameObject my_notice;
 
     private InteractivePrompt my_prompt;
 
     private float timer;
     private float time;
+
+    private const string default_text = "You've found :\n\n";
 
 	// Use this for initialization
 	void Start () {
@@ -32,10 +42,29 @@ public class Pickup : MonoBehaviour {
             if (Input.GetKeyDown(HeroKeys.INTERACT_KEY)) {
                 HeroController hc = FindObjectOfType<HeroController>();
                 if (hc.get_state() == HeroController.STATE.ACTIVE) {
-                    gameObject.SendMessage("pickup_action");
+                    this.my_pickup_object.add_to_inventory();
+                    //GameObject n_o = Instantiate(my_notice, FindObjectOfType<Canvas>().transform);
+                    Instantiate(my_notice, notice_holder.transform).GetComponent<NoticeGeneric>().set_text(default_text + this.my_pickup_object.get_name());
+                    Destroy(this.gameObject);
                 }
             }
         }
         
+    }
+
+    public void OnTriggerEnter2D(Collider2D coll) {
+        if (coll.gameObject.tag == "Player") {
+            this.my_prompt.set_active(InteractivePrompt.STATE.ACTIVE);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D coll) {
+        if (coll.gameObject.tag == "Player") {
+            this.my_prompt.set_active(InteractivePrompt.STATE.INACTIVE);
+        }
+    }
+
+    public void set_pickup_object(ObjectGeneric obj) {
+        this.my_pickup_object = obj;
     }
 }

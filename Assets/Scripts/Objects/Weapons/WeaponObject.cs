@@ -16,7 +16,7 @@ public abstract class WeaponObject : ObjectGeneric {
 
     override
     public void add_to_inventory() {
-        
+        MonoBehaviour.FindObjectOfType<Inventory>().add_weapon(this);
     }
 
     override

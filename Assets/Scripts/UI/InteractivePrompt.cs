@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractivePrompt : MonoBehaviour {
 
-    private enum STATE {
+    public enum STATE {
         ACTIVE,
         INACTIVE
     }
@@ -100,7 +100,11 @@ public class InteractivePrompt : MonoBehaviour {
         return this.my_state == STATE.ACTIVE;
     }
 
-    public void OnTriggerEnter2D(Collider2D coll) {
+    public void set_active(STATE new_state) {
+        this.my_state = new_state;
+    }
+
+    /*public void OnTriggerEnter2D(Collider2D coll) {
         if (coll.gameObject.tag == "Player") {
             this.my_state = STATE.ACTIVE;
         }
@@ -110,6 +114,6 @@ public class InteractivePrompt : MonoBehaviour {
         if (coll.gameObject.tag == "Player") {
             this.my_state = STATE.INACTIVE;
         }
-    }
+    }*/
 
 }

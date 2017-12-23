@@ -12,7 +12,7 @@ public class ClothingObject : ObjectGeneric {
 
     override
     public void add_to_inventory() {
-
+        MonoBehaviour.FindObjectOfType<Inventory>().add_clothing(this);
     }
 
     override
