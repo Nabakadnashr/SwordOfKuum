@@ -11,7 +11,7 @@ public abstract class ObjectGeneric {
     public string get_name() {
         return o_name;
     }
-    public string get_description() {
+    public virtual string get_description() {
         return o_desription;
     }
 

@@ -50,11 +50,11 @@ public class InventoryUI : MonoBehaviour {
         { Inventory.OBJECT_TYPE.WRITING, new Vector2(35f, 160f) }
     };
 
-    private Vector2 item_start_point = new Vector2(55f, 59.5f);
+    private Vector2 item_start_point = new Vector2(55f, 65f);
     private float item_buffer = 15f;
 
-    private Vector2 item_pointer_start_point = new Vector2(-59.5f, 40f);
-    private Vector2 active_pointer_start_point = new Vector2(-51.5f, 40f);
+    private Vector2 item_pointer_start_point = new Vector2(-59.5f, 45.5f);
+    private Vector2 active_pointer_start_point = new Vector2(-51.5f, 45.5f);
 
     private Dictionary<int, GameObject> my_item_list = new Dictionary<int, GameObject>();
     private Inventory inv;

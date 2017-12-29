@@ -23,6 +23,8 @@ public class MusicController : MonoBehaviour {
     private AudioClip solar_tanjent;
     [SerializeField]
     private AudioClip _33hz;
+    [SerializeField]
+    private AudioClip hog_jank_ii;
 
     private float quiet_time;
     private float timer;
@@ -37,7 +39,7 @@ public class MusicController : MonoBehaviour {
         quiet_time = 3f;
         timer = 0f;
 
-        play_tracks = new AudioClip[] { _33hz, solar_tanjent, warriors_of_light };
+        play_tracks = new AudioClip[] { hog_jank_ii, _33hz, solar_tanjent, warriors_of_light };
         tracks_ind = 0;
     }
 

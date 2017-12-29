@@ -91,14 +91,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_sprites:
-  - {fileID: 21300000, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
-  - {fileID: 21300002, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
-  - {fileID: 21300004, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
-  - {fileID: 21300006, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
-  - {fileID: 21300008, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
-  - {fileID: 21300010, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
-  - {fileID: 21300012, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
-  - {fileID: 21300014, guid: da14c82f3f2c755438ec5b9c1f94f0d4, type: 3}
+  - {fileID: 21300000, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
+  - {fileID: 21300002, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
+  - {fileID: 21300004, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
+  - {fileID: 21300006, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
+  - {fileID: 21300008, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
+  - {fileID: 21300010, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
+  - {fileID: 21300012, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
+  - {fileID: 21300014, guid: 56f4b42246dcec848828d971ee2b402d, type: 3}
 --- !u!212 &212253016014957630
 SpriteRenderer:
   m_ObjectHideFlags: 1
