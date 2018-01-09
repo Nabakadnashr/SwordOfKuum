@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulbHeadController : MonoBehaviour {
 
-    private enum STATE {
+    public enum STATE {
         REST,
         WALK
     }
@@ -20,22 +20,25 @@ public class BulbHeadController : MonoBehaviour {
 
     private float timer_walk;
     private float walk_time;
+    private float change_dir_chance;
 
     private float acceleration;
 
     Vector2 dir;
 
     void Awake() {
+
         my_state = STATE.REST;
 
         my_movement = this.GetComponent<EnemyMovement>();
         my_movement.set_max_speed(2f);
 
-        timer_rest = 0f;
-        rest_time = 1.5f;
+        rest_time = 2.5f;
+        timer_rest = Random.Range(0f, rest_time);
 
+        walk_time = 7.5f;
         timer_walk = 0f;
-        walk_time = 1f;
+        change_dir_chance = 0.01f;
 
         acceleration = 0.2f;
 
@@ -45,19 +48,20 @@ public class BulbHeadController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         my_movement.set_acceleration(this.acceleration);
+        my_movement.set_facing(EnemyMovement.FACING_DIRECTION.RIGHT);
     }
 
     // Update is called once per frame
     void Update () {
+
+        Debug.Log(my_movement.get_facing());
 
         switch (my_state) {
             case STATE.REST: {
                     timer_rest += Time.deltaTime;
                     if (timer_rest >= rest_time) {
                         timer_rest = 0f;
-                        dir = my_movement.get_direction((int)Random.Range(0, 7));
-                        my_state = STATE.WALK;
-                        Debug.Log("TIME TO WALK");
+                        change_state(STATE.WALK);
                     }
                 }break;
             case STATE.WALK: {
@@ -65,13 +69,48 @@ public class BulbHeadController : MonoBehaviour {
 
                     my_movement.move(dir);
 
+                    if (Random.Range(0f, 1f) < change_dir_chance) {
+                        dir = my_movement.get_direction_random();
+                        Debug.Log("CHANGE");
+                    }
+
                     if (timer_walk >= walk_time) {
                         timer_walk = 0f;
-                        my_state = STATE.REST;
-                        Debug.Log("WHEW, TIME TO REST");
+                        change_state(STATE.REST);
                     }
                 }break;
         }
 		
 	}
+
+    private void change_state(STATE new_state) {
+        this.my_state = new_state;
+        switch (new_state) {
+            case STATE.REST: {
+                    
+                }break;
+            case STATE.WALK: {
+                    this.dir = my_movement.get_direction_random();
+                }break;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll) {
+        foreach (ContactPoint2D p in coll.contacts) {
+            if (p.normal.x != 0 && Mathf.Sign(p.normal.x) != Mathf.Sign(dir.x)) {
+                this.dir = new Vector2(-1 * this.dir.x, this.dir.y);
+            }
+            if (p.normal.y != 0 && Mathf.Sign(p.normal.y) != Mathf.Sign(dir.y)) {
+                this.dir = new Vector2(this.dir.x, -1 * this.dir.y);
+            }
+        }
+    }
+
+    public Vector2 get_direction() {
+        return this.dir;
+    }
+
+    public STATE get_state() {
+        return this.my_state;
+    }
 }

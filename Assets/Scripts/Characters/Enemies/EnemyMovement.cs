@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-    public enum DIRECTION {
-        EAST,
-        NORTH_EAST,
-        NORTH,
-        NORTH_WEST,
-        WEST,
-        SOUTH_WEST,
-        SOUTH,
-        SOUTH_EAST,
-        AMOUNT
+    public enum FACING_DIRECTION {
+        UP = -1,
+        LEFT = -2,
+        RIGHT = 2,
+        DOWN = 1
     }
 
     private List<Vector2> DIRECTION_LIST = new List<Vector2> {
@@ -29,6 +24,8 @@ public class EnemyMovement : MonoBehaviour {
 
     private Rigidbody2D my_rigid_body;
     private Collider2D my_collider;
+
+    private FACING_DIRECTION facing;
 
     private float velocity_x;
     private float velocity_y;
@@ -52,6 +49,8 @@ public class EnemyMovement : MonoBehaviour {
 	void Update () {
 
         this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, ZSetting.get_z(my_collider));
+
+        facing = determine_facing(new Vector2(velocity_x, velocity_y));
 
         if (velocity_x != 0f) {
             velocity_x = damp_velocity(velocity_x);
@@ -80,6 +79,23 @@ public class EnemyMovement : MonoBehaviour {
         }
     }
 
+    private FACING_DIRECTION determine_facing(Vector2 vels) {
+        if (vels.y > 0f) {
+            return FACING_DIRECTION.UP;
+        }
+        if (vels.y < 0f) {
+            return FACING_DIRECTION.DOWN;
+        }
+        if (vels.x > 0f) {
+            return FACING_DIRECTION.RIGHT;
+        }
+        if (vels.x < 0f) {
+            return FACING_DIRECTION.LEFT;
+        }
+
+        return this.facing;
+    }
+
     public void set_max_speed(float amount) {
         this.max_speed = amount;
     }
@@ -89,8 +105,6 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     public void move(Vector2 direction) {
-        Debug.Log("MOVING[" + this.acceleration + "] FOR - " + this.gameObject);
-        Debug.Log("==> " + direction);
         this.velocity_x += this.acceleration * direction.x;
         this.velocity_y += this.acceleration * direction.y;
 
@@ -103,5 +117,17 @@ public class EnemyMovement : MonoBehaviour {
 
     public Vector2 get_direction(int index) {
         return this.DIRECTION_LIST[index];
+    }
+
+    public Vector2 get_direction_random() {
+        return this.DIRECTION_LIST[(int)Random.Range(0, 7)];
+    }
+
+    public FACING_DIRECTION get_facing() {
+        return this.facing;
+    }
+
+    public void set_facing(FACING_DIRECTION dir) {
+        this.facing = dir;
     }
 }
