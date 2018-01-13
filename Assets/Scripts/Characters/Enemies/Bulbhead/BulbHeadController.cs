@@ -54,8 +54,6 @@ public class BulbHeadController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        Debug.Log(my_movement.get_facing());
-
         switch (my_state) {
             case STATE.REST: {
                     timer_rest += Time.deltaTime;
